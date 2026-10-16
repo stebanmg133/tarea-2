@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body data-page="catalogo">
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main class="container container-wide">
+    <div class="row">
+        <h1 class="page-title grow">Catálogo de productos</h1>
+        <button class="btn primary" id="newProductBtn">➕ Nuevo producto</button>
+    </div>
+    <p class="muted">Gestión del catálogo (requiere sesión de administración). Los productos inactivos
+        no se ofrecen en pedidos nuevos, pero siguen visibles en el historial. Los precios son de ejemplo
+        y deben ajustarse a los reales del negocio.</p>
+
+    <div class="card" style="overflow:auto">
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Producto</th><th>Categoría</th><th>Precio base</th><th>Áreas</th>
+                <th>Sabores</th><th>Tamaños</th><th>Estado</th><th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="catalogBody"></tbody>
+        </table>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<div th:replace="~{fragments/layout :: lockOverlay}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

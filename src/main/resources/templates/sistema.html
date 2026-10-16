@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body data-page="sistema">
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main class="container container-wide">
+    <h1 class="page-title">Estado del sistema</h1>
+    <p class="muted">Diagnóstico de base de datos, impresión, bloqueo y copias de seguridad. No muestra secretos.</p>
+    <div id="systemBox" class="cards"></div>
+
+    <h2 class="section-title">Red local (LAN)</h2>
+    <div class="card">
+        <p>El servidor escucha en todas las interfaces. Los demás dispositivos entran por la IP del equipo
+            servidor y el puerto configurado (por defecto <strong>8080</strong>), por ejemplo
+            <code>http://192.168.1.50:8080</code>.</p>
+        <p class="muted">Recuerde permitir el puerto en el firewall de Windows y no exponer la aplicación
+            directamente a Internet.</p>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<div th:replace="~{fragments/layout :: lockOverlay}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

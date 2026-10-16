@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body data-page="panel">
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main class="container">
+    <h1 class="page-title">Panel del día</h1>
+    <div id="panelCards" class="cards"></div>
+
+    <h2 class="section-title">Resumen del negocio</h2>
+    <div id="panelExtra" class="cards"></div>
+
+    <h2 class="section-title">Accesos rápidos</h2>
+    <div class="row">
+        <a class="btn primary" th:href="@{/mesas}">➕ Nuevo pedido</a>
+        <a class="btn" th:href="@{/areas}">🍳 Áreas de preparación</a>
+        <a class="btn" th:href="@{/pedidos}">📋 Pedidos e historial</a>
+        <a class="btn" th:href="@{/impresion}">🖨️ Impresión</a>
+        <a class="btn" th:href="@{/sistema}">🖥️ Estado del sistema</a>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<div th:replace="~{fragments/layout :: lockOverlay}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

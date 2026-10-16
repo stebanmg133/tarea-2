@@ -1,0 +1,29 @@
+# =========================================================================
+#  pedidos-restaurante - archivos ignorados por git
+# =========================================================================
+
+# --- Datos y secretos locales (NUNCA versionar) --------------------------
+data/
+config/security.properties
+
+# --- Salidas de compilacion ----------------------------------------------
+target/
+*.class
+
+# --- IDEs ----------------------------------------------------------------
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+# --- Sistema operativo ---------------------------------------------------
+Thumbs.db
+Desktop.ini
+*.log
+
+# --- Maven wrapper (opcional; se puede versionar) ------------------------
+# .mvn/wrapper/maven-wrapper.jar

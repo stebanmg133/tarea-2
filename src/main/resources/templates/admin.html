@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body data-page="admin">
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main class="container container-wide">
+    <h1 class="page-title">Administración y seguridad</h1>
+
+    <div id="adminLogin" class="card">
+        <h2 class="section-title" style="margin-top:0">Acceso administrativo</h2>
+        <p class="muted">Sección protegida. Ingrese la contraseña administrativa (la misma del módulo de bloqueo).</p>
+        <label for="adminPassword">Contraseña</label>
+        <input type="password" id="adminPassword" placeholder="Contraseña administrativa" autocomplete="current-password"/>
+        <div class="row" style="margin-top:.6rem">
+            <button class="btn primary" id="loginBtn">Ingresar</button>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="hidden">
+        <div class="row">
+            <span class="muted">Sesión administrativa activa.</span>
+            <button class="btn right" id="logoutBtn">Cerrar sesión</button>
+        </div>
+
+        <h2 class="section-title">Estado del bloqueo temporal</h2>
+        <div id="lockInfo" class="cards"></div>
+
+        <div class="grid-2" style="margin-top:1rem">
+            <div class="card">
+                <h3 class="section-title" style="margin-top:0">Configuración del bloqueo</h3>
+                <label for="lInterval">Intervalo de validación (meses)</label>
+                <input id="lInterval" type="number" min="1" value="2"/>
+                <label for="lEmail">Correo del administrador</label>
+                <input id="lEmail" type="email" placeholder="admin@restaurante.local"/>
+                <label><input type="checkbox" id="lEnabled" style="width:auto" checked/> Módulo habilitado</label>
+                <button class="btn primary block" id="saveLockBtn" style="margin-top:.6rem">Guardar configuración</button>
+            </div>
+
+            <div class="card">
+                <h3 class="section-title" style="margin-top:0">Cambiar contraseña principal</h3>
+                <label for="cpCurrent">Contraseña actual</label>
+                <input type="password" id="cpCurrent"/>
+                <label for="cpNew">Nueva contraseña</label>
+                <input type="password" id="cpNew"/>
+                <label for="cpConfirm">Confirmar nueva contraseña</label>
+                <input type="password" id="cpConfirm"/>
+                <button class="btn primary block" id="changePwdBtn" style="margin-top:.6rem">Cambiar contraseña</button>
+
+                <h3 class="section-title">Contraseña temporal</h3>
+                <p class="muted small">Para personal de apoyo. Vence automáticamente.</p>
+                <label for="tpValue">Contraseña temporal</label>
+                <input type="password" id="tpValue"/>
+                <label for="tpHours">Válida por (horas)</label>
+                <input type="number" id="tpHours" min="1" value="24"/>
+                <div class="row" style="margin-top:.6rem">
+                    <button class="btn" id="tempPwdBtn">Crear temporal</button>
+                    <button class="btn" id="clearTempPwdBtn">Eliminar temporal</button>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Configuración del negocio</h2>
+        <div class="card">
+            <div class="grid-2">
+                <div><label for="sBusiness">Nombre del negocio</label><input id="sBusiness"/></div>
+                <div><label for="sCurrency">Símbolo de moneda</label><input id="sCurrency" value="$"/></div>
+                <div><label for="sDelivery">Valor de domicilio por defecto</label><input id="sDelivery" type="number" min="0" value="0"/></div>
+            </div>
+            <button class="btn primary" id="saveSettingsBtn" style="margin-top:.6rem">Guardar</button>
+        </div>
+
+        <h2 class="section-title">Impresora (servidor)</h2>
+        <div class="card">
+            <p id="printModeInfo" class="muted"></p>
+            <label for="printerSelect">Impresora del servidor</label>
+            <select id="printerSelect"></select>
+            <label for="paperWidth">Ancho de papel (caracteres)</label>
+            <input id="paperWidth" type="number" min="24" value="42"/>
+            <button class="btn primary block" id="savePrintBtn" style="margin-top:.6rem">Guardar impresión</button>
+            <p class="muted small">La impresión siempre parte del servidor. Si no hay impresora disponible y el
+                modo real no está activo, el sistema trabaja en modo <strong>simulación</strong> y lo indica claramente.</p>
+        </div>
+
+        <h2 class="section-title">Copias de seguridad</h2>
+        <div class="card">
+            <button class="btn primary" id="backupBtn">Crear copia de seguridad ahora</button>
+            <div style="overflow:auto;margin-top:.6rem">
+                <table class="data">
+                    <thead><tr><th>Fecha</th><th>Archivo</th><th>Tamaño</th><th>Estado</th><th>Detalle</th></tr></thead>
+                    <tbody id="backupsBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <h2 class="section-title">Historial administrativo</h2>
+        <div class="card" style="overflow:auto">
+            <table class="data">
+                <thead><tr><th>Fecha</th><th>Evento</th><th>Descripción</th><th>Actor</th></tr></thead>
+                <tbody id="eventsBody"></tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<div th:replace="~{fragments/layout :: lockOverlay}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

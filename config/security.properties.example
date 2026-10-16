@@ -1,0 +1,17 @@
+# =========================================================================
+#  pedidos-restaurante - credencial inicial (EJEMPLO, sin secretos reales)
+# =========================================================================
+# Copie este archivo como  config/security.properties  y coloque la
+# credencial inicial real. Ese archivo esta EXCLUIDO de git (.gitignore).
+#
+# Tambien puede usar variables de entorno o argumentos:
+#   PEDIDOS_ADMIN_PASSWORD      (variable de entorno)
+#   -Dpedidos.admin.password=... (propiedad de sistema / VM options en IntelliJ)
+#
+# La credencial se guarda codificada con BCrypt. Tras el primer arranque el
+# sistema marca "debe cambiar la contrasena". Cambiela en Administracion y no
+# vuelva a usar la credencial inicial.
+# =========================================================================
+
+admin.initial-password=CAMBIE_ESTO
+admin.email=admin@restaurante.local

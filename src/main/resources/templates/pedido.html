@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body data-page="pedido">
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main class="container container-wide">
+    <div class="row">
+        <h1 class="page-title grow" id="orderTitle">Tomar pedido</h1>
+        <a class="btn" th:href="@{/mesas}">← Volver</a>
+    </div>
+    <div id="orderMeta" style="margin-bottom:.6rem"></div>
+
+    <div class="card">
+        <div class="row">
+            <div class="grow">
+                <label for="customerName">Nombre del cliente</label>
+                <input id="customerName" placeholder="Opcional para mesa; requerido en domicilio"/>
+            </div>
+            <div class="grow">
+                <label for="customerPhone">Teléfono</label>
+                <input id="customerPhone" placeholder="Teléfono de contacto"/>
+            </div>
+        </div>
+
+        <div id="typeRow" class="row" style="margin-top:.6rem">
+            <div class="grow">
+                <label>Tipo de pedido</label>
+                <div id="typeChoices" class="type-choices"></div>
+            </div>
+        </div>
+
+        <div id="mesaField" class="row hidden" style="margin-top:.6rem">
+            <div class="grow">
+                <label for="tableSelect">Mesa</label>
+                <select id="tableSelect"></select>
+            </div>
+        </div>
+
+        <div id="domicilioFields" class="hidden">
+            <label for="deliveryAddress">Dirección de entrega</label>
+            <input id="deliveryAddress" placeholder="Dirección completa"/>
+            <label for="deliveryFee">Valor del domicilio</label>
+            <input id="deliveryFee" type="number" min="0" value="0"/>
+        </div>
+
+        <label for="generalNotes">Observaciones generales del pedido</label>
+        <textarea id="generalNotes" placeholder="Ej: entregar sin cubiertos"></textarea>
+
+        <div class="row" style="margin-top:.6rem">
+            <button class="btn primary" id="confirmNewBtn">✅ Confirmar y crear pedido</button>
+            <button class="btn" id="saveHeaderBtn">💾 Guardar datos</button>
+        </div>
+    </div>
+
+    <div class="order-layout" style="margin-top:1rem">
+        <section>
+            <div class="card" id="addItemsPanel">
+                <h2 class="section-title" style="margin-top:0">Productos</h2>
+                <div id="quickCats" class="quick-cats"></div>
+                <div id="productsGrid" class="products-grid"></div>
+            </div>
+        </section>
+
+        <aside>
+            <div class="cart">
+                <h2 class="section-title" style="margin-top:0">Pedido</h2>
+                <div id="cartItems"></div>
+
+                <div class="totals">
+                    <div class="line"><span>Subtotal</span><span id="subtotal">$ 0</span></div>
+                    <div class="line hidden" id="deliveryRow"><span>Domicilio</span><span id="deliveryShown">$ 0</span></div>
+                    <div class="line total"><span>Total</span><span id="total">$ 0</span></div>
+                </div>
+
+                <div class="row" style="margin-top:.8rem">
+                    <button class="btn blue grow" id="printFullBtn">🖨️ Imprimir comanda</button>
+                    <button class="btn grow" id="printAreaBtn">🖨️ Solo un área</button>
+                </div>
+                <div class="row" style="margin-top:.5rem">
+                    <button class="btn ok grow" id="markReadyBtn">✅ Marcar todo listo</button>
+                    <button class="btn warn grow hidden" id="cancelOrderBtn">✖ Cancelar pedido</button>
+                </div>
+
+                <h3 class="section-title">Impresiones</h3>
+                <div id="printJobs"></div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<div th:replace="~{fragments/layout :: lockOverlay}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

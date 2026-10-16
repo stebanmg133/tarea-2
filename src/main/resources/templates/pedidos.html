@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body data-page="pedidos">
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main class="container container-wide">
+    <h1 class="page-title">Pedidos e historial</h1>
+
+    <form id="filters" class="card">
+        <div class="grid-2">
+            <div><label for="f_code">Código</label><input id="f_code" placeholder="PED-001"/></div>
+            <div><label for="f_table">Mesa</label><input id="f_table" placeholder="M01"/></div>
+            <div>
+                <label for="f_type">Tipo</label>
+                <select id="f_type">
+                    <option value="">Todos</option>
+                    <option value="MESA">Mesa</option>
+                    <option value="DOMICILIO">Domicilio</option>
+                    <option value="LLEVAR">Para llevar</option>
+                </select>
+            </div>
+            <div>
+                <label for="f_status">Estado</label>
+                <select id="f_status">
+                    <option value="">Todos</option>
+                    <option value="PENDIENTE">Pendiente</option>
+                    <option value="EN_PREPARACION">En preparación</option>
+                    <option value="LISTO">Listo</option>
+                    <option value="ENTREGADO">Entregado</option>
+                    <option value="CANCELADO">Cancelado</option>
+                </select>
+            </div>
+            <div><label for="f_from">Desde</label><input id="f_from" type="date"/></div>
+            <div><label for="f_to">Hasta</label><input id="f_to" type="date"/></div>
+        </div>
+        <div class="row" style="margin-top:.6rem">
+            <label style="font-weight:600"><input type="checkbox" id="f_active" style="width:auto"/> Solo activos</label>
+            <button class="btn primary" type="submit">Buscar</button>
+            <button class="btn" type="button" id="clearFilters">Limpiar</button>
+        </div>
+    </form>
+
+    <div class="card" style="margin-top:1rem;overflow:auto">
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Código</th><th>Tipo</th><th>Mesa/Destino</th><th>Estado</th>
+                <th>Ítems</th><th>Total</th><th>Creado</th><th></th>
+            </tr>
+            </thead>
+            <tbody id="ordersBody"></tbody>
+        </table>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<div th:replace="~{fragments/layout :: lockOverlay}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

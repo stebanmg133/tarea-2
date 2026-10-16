@@ -1,0 +1,313 @@
+/* =========================================================================
+   pedidos-restaurante - estilos
+   Tema cálido de pizzería. Responsive para computador, tableta y móvil.
+   ========================================================================= */
+
+:root {
+    --tomate: #b91c1c;
+    --tomate-claro: #ef4444;
+    --masa: #fff7ed;
+    --crema: #ffedd5;
+    --carbon: #1f2937;
+    --carbon-suave: #374151;
+    --verde: #15803d;
+    --azul: #1d4ed8;
+    --ambar: #d97706;
+    --cyan: #0891b2;
+    --morado: #7c3aed;
+    --gris: #64748b;
+    --borde: #e5e7eb;
+    --sombra: 0 2px 8px rgba(0, 0, 0, .08);
+    --radio: 12px;
+    --toque: 46px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--carbon);
+    background: var(--masa);
+}
+
+body { min-height: 100vh; display: flex; flex-direction: column; }
+
+a { color: var(--tomate); text-decoration: none; }
+
+.hidden { display: none !important; }
+.muted { color: var(--gris); }
+.small { font-size: .82rem; }
+.row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+.grow { flex: 1; }
+.right { margin-left: auto; }
+.error { color: var(--tomate); font-weight: 600; }
+.ok { color: var(--verde); font-weight: 600; }
+.center { text-align: center; }
+
+/* --- Topbar --- */
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .6rem 1rem;
+    background: linear-gradient(90deg, var(--tomate), var(--tomate-claro));
+    color: #fff;
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: center; gap: .5rem; color: #fff; font-weight: 800; font-size: 1.1rem; }
+.brand-ico { font-size: 1.5rem; }
+
+.nav { display: flex; gap: .25rem; flex-wrap: wrap; }
+.nav a {
+    color: #fff;
+    padding: .5rem .7rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: .92rem;
+}
+.nav a:hover, .nav a.active { background: rgba(255, 255, 255, .22); }
+
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: .5rem; }
+
+.badge {
+    background: #fff;
+    color: var(--tomate);
+    border-radius: 999px;
+    padding: .2rem .6rem;
+    font-size: .78rem;
+    font-weight: 700;
+}
+.badge-lock { background: #fde68a; color: #7c2d12; }
+.badge-sim { background: #fef3c7; color: #92400e; }
+.badge-real { background: #dcfce7; color: #166534; }
+
+/* --- Layout --- */
+.container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 1rem; flex: 1; }
+.container-wide { max-width: 1600px; }
+
+.page-title { font-size: 1.5rem; margin: .2rem 0 1rem; }
+.section-title { font-size: 1.1rem; margin: 1.2rem 0 .6rem; }
+
+/* --- Cards --- */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: .8rem; }
+.card {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 1rem;
+    box-shadow: var(--sombra);
+}
+.card .value { font-size: 1.8rem; font-weight: 800; }
+.card .label { color: var(--gris); font-size: .85rem; }
+.card.accent { border-left: 6px solid var(--tomate); }
+.card.ok { border-left: 6px solid var(--verde); }
+.card.warn { border-left: 6px solid var(--ambar); }
+.card.err { border-left: 6px solid var(--tomate); }
+
+/* --- Buttons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    min-height: var(--toque);
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    background: #fff;
+    color: var(--carbon);
+    font-size: .95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .12s, transform .05s;
+}
+.btn:hover { background: #f8fafc; }
+.btn:active { transform: scale(.98); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn.primary { background: var(--tomate); border-color: var(--tomate); color: #fff; }
+.btn.primary:hover { background: var(--tomate-claro); }
+.btn.ok { background: var(--verde); border-color: var(--verde); color: #fff; }
+.btn.warn { background: var(--ambar); border-color: var(--ambar); color: #fff; }
+.btn.blue { background: var(--azul); border-color: var(--azul); color: #fff; }
+.btn.ghost { background: transparent; }
+.btn.small { min-height: 34px; padding: .25rem .6rem; font-size: .82rem; }
+.btn.block { width: 100%; }
+
+/* --- Forms --- */
+label { display: block; font-weight: 600; margin: .5rem 0 .2rem; font-size: .88rem; }
+input, select, textarea {
+    width: 100%;
+    min-height: var(--toque);
+    padding: .5rem .6rem;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fff;
+}
+textarea { min-height: 70px; resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--tomate-claro); border-color: var(--tomate-claro); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+
+/* --- Tipo de pedido --- */
+.type-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+.type-btn {
+    border: 2px solid var(--borde);
+    border-radius: var(--radio);
+    padding: .8rem;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    font-size: 1rem;
+}
+.type-btn .ico { font-size: 1.6rem; }
+.type-btn.selected { border-color: var(--tomate); background: var(--crema); }
+.type-btn[data-type="MESA"] { color: #c2410c; }
+.type-btn[data-type="DOMICILIO"] { color: var(--azul); }
+.type-btn[data-type="LLEVAR"] { color: var(--verde); }
+
+/* --- Mesas --- */
+.tables-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: .7rem; }
+.table-cell {
+    border-radius: var(--radio);
+    border: 2px solid var(--borde);
+    background: #fff;
+    padding: .8rem;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: var(--sombra);
+}
+.table-cell .code { font-size: 1.3rem; font-weight: 800; }
+.table-cell .state { font-size: .78rem; }
+.table-cell.free { border-color: var(--verde); }
+.table-cell.free .state { color: var(--verde); }
+.table-cell.occupied { border-color: var(--tomate); background: #fef2f2; }
+.table-cell.occupied .state { color: var(--tomate); }
+
+/* --- Pills / estados --- */
+.pill {
+    display: inline-block;
+    border-radius: 999px;
+    padding: .15rem .6rem;
+    font-size: .78rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--gris);
+}
+.pill[data-status="PENDIENTE"] { background: var(--gris); }
+.pill[data-status="EN_PREPARACION"] { background: var(--ambar); }
+.pill[data-status="LISTO"] { background: var(--cyan); }
+.pill[data-status="ENTREGADO"] { background: var(--verde); }
+.pill[data-status="CANCELADO"] { background: var(--tomate); }
+
+.type-tag { font-weight: 700; }
+.type-tag[data-type="MESA"] { color: #c2410c; }
+.type-tag[data-type="DOMICILIO"] { color: var(--azul); }
+.type-tag[data-type="LLEVAR"] { color: var(--verde); }
+
+/* --- Tabla/listas --- */
+table.data { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radio); overflow: hidden; }
+table.data th, table.data td { padding: .6rem .7rem; border-bottom: 1px solid var(--borde); text-align: left; font-size: .9rem; }
+table.data th { background: #f1f5f9; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; color: var(--gris); }
+table.data tr:hover td { background: #fafafa; }
+
+.order-row { cursor: pointer; }
+
+/* --- Order-taking layout --- */
+.order-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; align-items: start; }
+@media (max-width: 980px) { .order-layout { grid-template-columns: 1fr; } }
+
+.quick-cats { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.quick-cat {
+    border: 1px solid var(--borde); background: #fff; border-radius: 999px;
+    padding: .4rem .9rem; cursor: pointer; font-weight: 700;
+}
+.quick-cat.selected { background: var(--tomate); color: #fff; border-color: var(--tomate); }
+
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: .6rem; }
+.product-card {
+    background: #fff; border: 1px solid var(--borde); border-radius: var(--radio);
+    padding: .7rem; cursor: pointer; box-shadow: var(--shadow, var(--sombra));
+    display: flex; flex-direction: column; gap: .3rem;
+}
+.product-card:hover { border-color: var(--tomate); }
+.product-card .pname { font-weight: 800; }
+.product-card .pcat { font-size: .75rem; color: var(--gris); }
+.product-card .pprice { font-weight: 800; color: var(--verde); }
+.product-card .ptags { font-size: .72rem; color: var(--gris); }
+
+.cart { background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); padding: 1rem; box-shadow: var(--sombra); position: sticky; top: 76px; }
+.cart-item { border-bottom: 1px dashed var(--borde); padding: .5rem 0; }
+.cart-item .ci-head { display: flex; gap: .5rem; align-items: baseline; }
+.cart-item .ci-name { font-weight: 700; }
+.cart-item .ci-sub { font-size: .8rem; color: var(--gris); }
+.qty { display: inline-flex; align-items: center; gap: .3rem; }
+.qty button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--borde); background: #fff; font-weight: 800; cursor: pointer; }
+
+.totals { margin-top: .8rem; border-top: 2px solid var(--borde); padding-top: .6rem; }
+.totals .line { display: flex; justify-content: space-between; padding: .15rem 0; }
+.totals .total { font-size: 1.3rem; font-weight: 800; }
+
+/* --- Areas --- */
+.area-tabs { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .8rem; }
+.area-tab { border: 1px solid var(--borde); background: #fff; border-radius: 10px; padding: .5rem .9rem; cursor: pointer; font-weight: 700; }
+.area-tab.selected { background: var(--carbon); color: #fff; border-color: var(--carbon); }
+
+.work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .7rem; }
+.work-card { background: #fff; border: 1px solid var(--borde); border-left: 6px solid var(--ambar); border-radius: var(--radio); padding: .8rem; box-shadow: var(--sombra); }
+.work-card.ready { border-left-color: var(--cyan); }
+.work-card .wc-top { display: flex; justify-content: space-between; align-items: center; gap: .4rem; }
+.work-card .wc-order { font-weight: 800; }
+.work-card .wc-prod { font-size: 1.05rem; font-weight: 800; margin: .3rem 0; }
+.work-card .wc-meta { font-size: .82rem; color: var(--gris); }
+
+/* --- Lock overlay --- */
+.lock-overlay {
+    position: fixed; inset: 0; background: rgba(31, 41, 55, .92);
+    display: flex; align-items: center; justify-content: center; z-index: 100; padding: 1rem;
+}
+.lock-card { background: #fff; border-radius: 16px; padding: 1.6rem; max-width: 420px; width: 100%; text-align: center; }
+.lock-ico { font-size: 2.5rem; }
+.lock-card h2 { color: var(--tomate); margin: .6rem 0; }
+
+/* --- Toast --- */
+#toast {
+    position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+    background: var(--carbon); color: #fff; padding: .7rem 1.1rem; border-radius: 10px;
+    z-index: 120; max-width: 90vw; box-shadow: var(--sombra);
+}
+#toast.error { background: var(--tomate); }
+#toast.ok { background: var(--verde); }
+
+/* --- Modal --- */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 90; padding: 1rem; }
+.modal { background: #fff; border-radius: 14px; padding: 1.2rem; max-width: 520px; width: 100%; max-height: 90vh; overflow: auto; }
+
+/* --- Footer --- */
+.footer { text-align: center; padding: .8rem; border-top: 1px solid var(--borde); background: #fff; }
+
+/* --- Loading --- */
+.loading { display: inline-block; width: 18px; height: 18px; border: 3px solid var(--borde); border-top-color: var(--tomate); border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- Print slip preview --- */
+pre.slip { background: #fffdf5; border: 1px dashed var(--gris); padding: .8rem; font-family: "Consolas", "Courier New", monospace; font-size: .82rem; white-space: pre-wrap; }
+
+@media (max-width: 700px) {
+    .type-choices { grid-template-columns: 1fr; }
+    .nav a { padding: .45rem .5rem; font-size: .84rem; }
+    .cart { position: static; }
+    table.data th, table.data td { padding: .45rem; font-size: .82rem; }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body data-page="areas">
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main class="container container-wide">
+    <h1 class="page-title">Áreas de preparación</h1>
+    <p class="muted">Cada área muestra únicamente los artículos de su destino. Un artículo se prepara
+        una sola vez aunque tenga varios destinos, y no se cobra dos veces.</p>
+
+    <div id="areaTabs" class="area-tabs"></div>
+    <div id="workGrid" class="work-grid"></div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<div th:replace="~{fragments/layout :: lockOverlay}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

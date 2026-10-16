@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body data-page="impresion">
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main class="container container-wide">
+    <h1 class="page-title">Estado de impresión</h1>
+    <div class="card">
+        <p class="muted">Cada intento de impresión tiene un identificador propio. “Aceptada por el sistema de
+            impresión” significa que el trabajo entró a la cola, <strong>no</strong> que ya salió en papel.
+            La impresión se realiza desde el servidor. Si el modo real no está activo, se muestra como
+            SIMULADO y la comanda se guarda en disco para revisión.</p>
+        <a class="btn" th:href="@{/admin}">Configurar impresora</a>
+    </div>
+
+    <div class="card" style="margin-top:1rem;overflow:auto">
+        <table class="data">
+            <thead>
+            <tr><th>Pedido</th><th>Destino</th><th>Estado</th><th>Versión/Intento</th><th>Modo</th><th>Detalle</th><th>Acciones</th></tr>
+            </thead>
+            <tbody id="jobsBody"></tbody>
+        </table>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<div th:replace="~{fragments/layout :: lockOverlay}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>
